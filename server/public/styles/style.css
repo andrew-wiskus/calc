@@ -1,0 +1,35 @@
+.operator {
+  display:inline-block;
+}
+.action {
+  display:inline-block;
+}
+
+.number {
+  display:inline-block;
+}
+
+.numbers {
+  display: inline-block;
+  margin-left: 35%;
+  width: 300px;
+    text-align: center;
+}
+
+.operators{
+  margin-left: 35%;
+  width: 300px;
+  text-align: center;
+}
+
+h1{
+  text-align: center;
+  margin-left: 35%;
+  width:300px;
+}
+#display{
+  margin-left: 35%;
+  width: 300px;
+  text-align: center;
+  font-size: 1.5em;
+}

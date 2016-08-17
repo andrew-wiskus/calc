@@ -1,0 +1,121 @@
+
+function checkPressed(input) {
+    var equals = "";
+    switch (input) {
+        case "clear":
+            equasionArray = [];
+            break;
+        case "equals":
+            //plz dont hack me mr. user's
+            equasionArray = [];
+            equals = output;
+            console.log("equals", equals);
+            output = eval(equals);
+            console.log("output", output);
+
+
+            break;
+        default:
+            buildEquasionArray(input);
+            break;
+
+    }
+
+
+}
+
+function buildEquasionArray(input) {
+    var inputType = checkInput(input);
+    var last = checkInput(equasionArray[equasionArray.length - 1]);
+
+    if (checkFirst(input)) {
+        console.log("first Input");
+    } else {
+
+        switch (inputType) {
+
+            case "isNum":
+                if (last == "isNum") {
+                    equasionArray[equasionArray.length - 1] += input;
+                    displayInput();
+                } else {
+                    equasionArray.push(input);
+                    displayInput();
+                }
+                break;
+
+            case "operator":
+                if (last == "operator") {
+                    equasionArray[equasionArray.length - 1] = input;
+                    displayInput();
+                } else if (last == "isNum") {
+                    equasionArray.push(input);
+                    displayInput();
+                }
+                break;
+
+            default:
+                console.log("somethings wrong");
+        }
+        console.log(equasionArray);
+    }
+}
+
+function displayInput() {
+
+    equasionArray.forEach(function(variable, i) {
+        if (checkInput(variable) == "isNum") {
+            output += variable;
+        } else {
+            var symbol = "";
+            switch (variable) {
+                case "divide":
+                    symbol = " / ";
+                    break;
+                case "multiply":
+                    symbol = " * ";
+                    break;
+                case "add":
+                    symbol = " + ";
+                    break;
+                case "subtract":
+                    symbol = " - ";
+                    break;
+                default:
+                    console.log("something happened in displayInput()");
+            }
+            output += symbol;
+
+        }
+    });
+}
+
+function checkFirst(inputed) {
+    var inputType = checkInput(inputed);
+    if (equasionArray.length === 0 && inputType == "isNum") {
+        equasionArray.push(inputed);
+        //$('#output').text(inputed);
+        return true;
+    } else if (equasionArray.length === 0 && inputType == "operator") {
+        console.log("put num first");
+        return false;
+    }
+
+}
+
+function checkInput(input) {
+    var isNum = false;
+    if (input * -1 >= 0 || input * -1 <= 0) {
+        isNum = true;
+    } else {
+        isNum = false;
+    }
+
+    if (isNum) {
+        return ("isNum");
+    } else {
+        return ("operator");
+    }
+
+    console.log("somethings wrong");
+}
